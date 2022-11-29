@@ -16,10 +16,10 @@
 # under the License.
 
 name: Python Release Build
-on:
-  push:
-    tags: ["*-rc*"]
-    branches: ["master"]
+on: [push, pull_request]
+  # push:
+    # tags: ["*-rc*"]
+    # branches: ["master"]
 
 jobs:
   generate-license:
@@ -91,6 +91,10 @@ jobs:
     needs: [generate-license]
     name: Manylinux
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        arch: [amd64, arm64]
     steps:
       - uses: actions/checkout@v2
       - run: rm LICENSE.txt
@@ -100,10 +104,14 @@ jobs:
           name: python-wheel-license
           path: .
       - run: cat LICENSE.txt
+      - name: Set up QEMU
+        if: matrix.arch == 'arm64'
+        uses: docker/setup-qemu-action@v2
       - name: Build wheels
         run: |
-          export RUSTFLAGS='-C target-cpu=skylake'
-          docker run --rm -v $(pwd):/io \
+          set -x
+          if test ${{ matrix.arch }} = 'amd64'; then export RUSTFLAGS='-C target-cpu=skylake'; else export RUSTFLAGS='-C target-cpu=armv8.1'; fi
+          docker run --rm --platform linux/${{ matrix.arch }} -v $(pwd):/io \
             --workdir /io \
             ghcr.io/pyo3/maturin:v0.14.2 \
             build --release --manylinux 2014 --locked
