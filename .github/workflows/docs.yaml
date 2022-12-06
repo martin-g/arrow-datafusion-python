@@ -2,8 +2,10 @@ on:
   push:
     branches:
       - docs-workflow
+    tags-ignore:
+      - "**-rc**"
     tags:
-      - "!**-rc**"
+      - "*"
     # paths:
     #   - docs/**
     #   - .github/workflows/docs.yml
