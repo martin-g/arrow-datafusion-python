@@ -29,6 +29,3 @@ github:
     rebase: false
   features:
     issues: true
-staging:
-  whoami: asf-staging
-  subdir: datafusion-python
