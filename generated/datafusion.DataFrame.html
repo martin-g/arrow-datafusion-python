@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>datafusion.DataFrame &#8212; Arrow DataFusion  documentation</title>
     
@@ -34,6 +34,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="SessionContext" href="../api/execution_context.html" />
@@ -204,9 +205,259 @@
               
               <div class="toc-item">
                 
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
-    
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#datafusion.DataFrame">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     DataFrame
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datafusion.DataFrame.__init__">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       DataFrame.__init__()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datafusion.DataFrame.aggregate">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       DataFrame.aggregate()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datafusion.DataFrame.cache">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       DataFrame.cache()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datafusion.DataFrame.collect">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       DataFrame.collect()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datafusion.DataFrame.collect_partitioned">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       DataFrame.collect_partitioned()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datafusion.DataFrame.distinct">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       DataFrame.distinct()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datafusion.DataFrame.except_all">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       DataFrame.except_all()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datafusion.DataFrame.explain">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       DataFrame.explain()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datafusion.DataFrame.filter">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       DataFrame.filter()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datafusion.DataFrame.intersect">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       DataFrame.intersect()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datafusion.DataFrame.join">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       DataFrame.join()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datafusion.DataFrame.limit">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       DataFrame.limit()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datafusion.DataFrame.repartition">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       DataFrame.repartition()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datafusion.DataFrame.repartition_by_hash">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       DataFrame.repartition_by_hash()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datafusion.DataFrame.schema">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       DataFrame.schema()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datafusion.DataFrame.select">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       DataFrame.select()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datafusion.DataFrame.select_columns">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       DataFrame.select_columns()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datafusion.DataFrame.show">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       DataFrame.show()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datafusion.DataFrame.sort">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       DataFrame.sort()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datafusion.DataFrame.union">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       DataFrame.union()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datafusion.DataFrame.union_distinct">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       DataFrame.union_distinct()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datafusion.DataFrame.with_column">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       DataFrame.with_column()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datafusion.DataFrame.with_column_renamed">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       DataFrame.with_column_renamed()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datafusion.DataFrame.write_csv">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       DataFrame.write_csv()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datafusion.DataFrame.write_json">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       DataFrame.write_json()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datafusion.DataFrame.write_parquet">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       DataFrame.write_parquet()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
 </nav>
               </div>
               
@@ -522,7 +773,7 @@ renamed does not exist.</p>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
 </p>
     </div>
     
